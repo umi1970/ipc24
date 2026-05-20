@@ -1,69 +1,70 @@
-# Welcome to your Lovable project
+# IPC24 e.K. — Website Redesign (2026)
 
-## Project info
+Astro 4.x + Tailwind 3.x + MDX redesign of [ipc24.de](https://ipc24.de), hosted on Netlify with Convex as content + form backend.
 
-**URL**: https://lovable.dev/projects/a0022ecb-ffb9-45dc-96a0-7acaea5d3eab
+> **Branch posture (Phase 1):** This redesign lives on `redesign/phase-1`. `main` continues to host the legacy Lovable/Vite+React site until cutover (Phase 5).
 
-## How can I edit this code?
+## Stack
 
-There are several ways of editing your application.
+| Layer            | Choice                                  | Why                                        |
+| ---------------- | --------------------------------------- | ------------------------------------------ |
+| Framework        | Astro 4.x                               | Static-first, MDX-native, low JS payload   |
+| Styling          | Tailwind 3.x                            | Plan-mandated; small, opinionated          |
+| Content (blog)   | Convex `blogPosts` + MDX bodies         | Editable without redeploy; SSG snapshot    |
+| Forms            | Netlify Function → Convex + Resend mail | Server-side validation + audit trail       |
+| Hosting          | Netlify (project `ipc24ek`)             | Existing project; matches DNS plan         |
+| Email            | Resend                                  | Already approved as transactional provider |
+| Lint / Format    | Biome                                   | Single tool; fast                          |
+| Accessibility CI | pa11y-ci                                | WCAG2AA gate                               |
+| Performance CI   | Lighthouse CI                           | ≥0.9 perf / ≥0.95 a11y / ≥0.9 BP/SEO       |
 
-**Use Lovable**
+## Local dev
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a0022ecb-ffb9-45dc-96a0-7acaea5d3eab) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+nvm use 20
+npm ci
+npm run dev        # http://localhost:4321
+npm run convex:dev # parallel; needs CONVEX_DEPLOY_KEY
 ```
 
-**Edit a file directly in GitHub**
+## Required environment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+CONVEX_URL=...
+CONVEX_DEPLOY_KEY=...        # only for `convex deploy`
+RESEND_API_KEY=...
+PUBLIC_SITE_URL=https://preview-redesign.ipc24.de
+```
 
-**Use GitHub Codespaces**
+Set these in Netlify → Site → Environment variables, scoped to the **redesign** branch deploy.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Deploy flow
 
-## What technologies are used for this project?
+1. PR into `redesign/phase-1` → Netlify Deploy Preview at `deploy-preview-<n>--ipc24ek.netlify.app`.
+2. Merge into `redesign/phase-1` → Netlify branch deploy at `redesign-phase-1--ipc24ek.netlify.app` (proposed canonical preview URL).
+3. Cutover (Phase 5): PR `redesign/phase-1` → `main`, swap Netlify production branch, point `ipc24.de` DNS.
 
-This project is built with .
+## CI gates
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- `build-check`: Biome lint, `astro check`, `astro build`, unit tests.
+- `a11y-lighthouse`: pa11y-ci sitemap crawl, Lighthouse CI assertions.
 
-## How can I deploy this project?
+Both run on every PR and on push to `main` or `redesign/**`.
 
-Simply open [Lovable](https://lovable.dev/projects/a0022ecb-ffb9-45dc-96a0-7acaea5d3eab) and click on Share -> Publish.
+## Folder layout
 
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+```
+src/
+  pages/        Astro routes (incl. MDX)
+  layouts/      Page layouts
+  components/   Astro/UI components
+  content/      Local MDX content collections
+netlify/
+  functions/    Netlify Functions (contact form, etc.)
+convex/
+  schema.ts     Convex tables (blogPosts, contactSubmissions)
+  blog.ts       Public read queries
+  contact.ts    Form mutation
+.github/
+  workflows/    CI definitions
+```
