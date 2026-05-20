@@ -15,14 +15,15 @@
     "convex:dev": "convex dev",
     "convex:deploy": "convex deploy",
     "lh:ci": "lhci autorun",
-    "pa11y:ci": "pa11y-ci"
+    "pa11y:ci": "pa11y-ci",
+    "prebuild": "convex codegen --typecheck disable"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^3.1.9",
     "@astrojs/tailwind": "^5.1.4",
     "astro": "^4.16.18",
-    "convex": "^1.17.0",
+    "convex": "1.17",
     "resend": "^4.0.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.6.3"
