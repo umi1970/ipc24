@@ -1,69 +1,108 @@
-# Welcome to your Lovable project
+# IPC24 e.K. — ipc24.de Website
 
-## Project info
+Marketing-Website für IPC24 e.K. — Webentwicklung & Digitale Lösungen.
 
-**URL**: https://lovable.dev/projects/a0022ecb-ffb9-45dc-96a0-7acaea5d3eab
+## Stack
 
-## How can I edit this code?
+| Layer | Technologie | Version |
+|---|---|---|
+| Framework | [Astro](https://astro.build) | 4.x |
+| Styling | [Tailwind CSS](https://tailwindcss.com) | 3.x |
+| Content | MDX + Astro Content Collections | — |
+| UI Islands | React | 18.x |
+| Linter/Formatter | [Biome](https://biomejs.dev) | 1.9.4 |
+| Sprache (Phase 1) | Deutsch (`de`) | — |
+| Deploy | Netlify | — |
 
-There are several ways of editing your application.
+## Branch-Strategie
 
-**Use Lovable**
+| Branch | Zweck |
+|---|---|
+| `main` | Produktion (alter React/Vite-Stack) — bleibt bis zum Cutover unverändert |
+| `redesign-astro` | Neuer Astro-Stack — Preview-Deploy auf Netlify |
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a0022ecb-ffb9-45dc-96a0-7acaea5d3eab) and start prompting.
+Der Cutover von `main` → `redesign-astro` erfolgt nach QA-Freigabe.
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Lokale Entwicklung
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# 1. Abhängigkeiten installieren
+npm install --legacy-peer-deps
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 2. Dev-Server starten
 npm run dev
+
+# 3. Produktions-Build testen
+npm run build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+## Verfügbare Skripte
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+| Befehl | Beschreibung |
+|---|---|
+| `npm run dev` | Dev-Server (localhost:4321) |
+| `npm run build` | Produktions-Build → `dist/` |
+| `npm run preview` | Produktions-Build lokal testen |
+| `npm run lint` | Biome-Lint (Fehler prüfen) |
+| `npm run format` | Biome-Format (automatisch korrigieren) |
+| `npm run check` | TypeScript + Astro-Typen prüfen |
 
-**Use GitHub Codespaces**
+## Verzeichnisstruktur
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+src/
+  components/      # Wiederverwendbare Astro/React-Komponenten
+  layouts/         # Seiten-Layouts (BaseLayout, BlogLayout, …)
+  pages/           # Alle Routen (index.astro, /blog, /freelance, …)
+  content/
+    blog/
+      de/          # Deutsche Blog-Posts (MDX, Phase 1)
+      en/          # Englische Blog-Posts (leer, Phase 2)
+    services/      # Service-Datendateien (JSON/YAML)
+  styles/          # Global CSS (Tailwind-Import + @layer utilities)
+public/            # Statische Assets (favicon, robots.txt, og-images)
+.github/workflows/ # GitHub Actions CI
+```
 
-## What technologies are used for this project?
+## Informationsarchitektur (Phase 1)
 
-This project is built with .
+| Route | Inhalt |
+|---|---|
+| `/` | Homepage mit Drei-Pfad-Hero |
+| `/freelance` | Senior-Freelance-Profil |
+| `/websites` | KMU-Website-Pakete (4 Subpages) |
+| `/web-apps` | Web-Apps & KI-Integration |
+| `/referenzen` | Referenzen & Case Studies |
+| `/ueber` | Über IPC24 e.K. |
+| `/kontakt` | Kontaktformular (→ Resend) |
+| `/blog` | Blog-Übersicht |
+| `/blog/[slug]` | Blog-Artikel (MDX) |
+| `/impressum` | Impressum |
+| `/datenschutz` | Datenschutz |
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Deploy-Flow
 
-## How can I deploy this project?
+1. Feature-Branch → PR gegen `redesign-astro`
+2. GitHub Actions: Build-Check + Biome-Check + Lighthouse CI + pa11y
+3. Netlify Preview-Deploy: `redesign-astro--ipc24ek.netlify.app`
+4. CTO-Review + Merge nach `redesign-astro`
+5. Cutover zu `main` nach vollständiger QA-Freigabe
 
-Simply open [Lovable](https://lovable.dev/projects/a0022ecb-ffb9-45dc-96a0-7acaea5d3eab) and click on Share -> Publish.
+## Quality Gates (CI)
 
-## I want to use a custom domain - is that possible?
+- Lighthouse Performance ≥ 90 (mobile)
+- Lighthouse Accessibility ≥ 95
+- Lighthouse Best Practices ≥ 95
+- Lighthouse SEO ≥ 95
+- pa11y WCAG 2.1 AA
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+## Secrets (via CTO / GitHub Actions)
+
+| Secret | Zweck |
+|---|---|
+| `LHCI_GITHUB_APP_TOKEN` | Lighthouse CI GitHub-App |
+| `RESEND_API_KEY` | Kontaktformular E-Mail-Versand |
+| `NETLIFY_AUTH_TOKEN` | Netlify Deploy |
+
+> **Hinweis:** Secrets werden ausschließlich vom CTO verwaltet.
