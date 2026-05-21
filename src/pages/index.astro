@@ -1,0 +1,178 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const paths = [
+  {
+    href: "/freelance",
+    icon: "👤",
+    label: "Freelance-Experte",
+    headline: "Senior-Entwickler auf Abruf",
+    body: "Erfahrener Full-Stack-Entwickler für Ihre anspruchsvollen Projekte — remote oder vor Ort.",
+    cta: "Freelance-Profil ansehen",
+    color: "from-brand-500 to-brand-700",
+    border: "border-brand-200 hover:border-brand-400",
+  },
+  {
+    href: "/websites",
+    icon: "🌐",
+    label: "KMU-Websites",
+    headline: "Professionelle Websites für KMU",
+    body: "Moderne, schnelle und barrierefreie Websites für kleine und mittlere Unternehmen — inkl. SEO, Hosting und Support.",
+    cta: "Website-Pakete ansehen",
+    color: "from-accent to-accent-dark",
+    border: "border-orange-200 hover:border-orange-400",
+  },
+  {
+    href: "/web-apps",
+    icon: "⚙️",
+    label: "Web-Apps & KI",
+    headline: "Web-Applikationen & KI-Integration",
+    body: "Maßgeschneiderte Webanwendungen mit KI-Unterstützung — von der Konzeption bis zum Launch.",
+    cta: "Web-App-Projekte ansehen",
+    color: "from-purple-500 to-purple-700",
+    border: "border-purple-200 hover:border-purple-400",
+  },
+] as const;
+---
+
+<BaseLayout
+  title="IPC24 e.K. — Webentwicklung & Digitale Lösungen"
+  description="IPC24 e.K. bietet professionelle Webentwicklung, KMU-Websites und Web-Apps mit KI-Integration aus einer Hand. Senior-Entwickler aus Deutschland."
+>
+  <!-- Schema.org WebSite -->
+  <script slot="head" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "IPC24 e.K.",
+      "url": "https://ipc24.de",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ipc24.de/blog?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+
+  <!-- HERO -->
+  <section
+    class="relative overflow-hidden bg-gradient-to-br from-gray-900 via-brand-950 to-gray-900 text-white"
+    aria-labelledby="hero-heading"
+  >
+    <div class="absolute inset-0 opacity-10">
+      <div
+        class="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-brand-400 blur-3xl"
+      >
+      </div>
+      <div
+        class="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-purple-500 blur-3xl"
+      >
+      </div>
+    </div>
+
+    <div class="section-container relative py-20 lg:py-28">
+      <!-- Logo / Brand placeholder -->
+      <div class="flex justify-center mb-8">
+        <div
+          class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-6 py-3 backdrop-blur"
+        >
+          <span class="text-2xl font-black tracking-tight text-white"
+            >IPC24<span class="text-accent">.</span>de</span
+          >
+          <span
+            class="hidden sm:inline-block text-xs font-medium text-brand-300 uppercase tracking-widest"
+            >e.K.</span
+          >
+        </div>
+      </div>
+
+      <h1
+        id="hero-heading"
+        class="text-center text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight"
+      >
+        Professionelle Webentwicklung<br />
+        <span class="text-brand-300">aus einer Hand.</span>
+      </h1>
+
+      <p class="mt-6 text-center text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
+        Senior-Entwickler, KMU-Websites und KI-gestützte Web-Apps — wählen Sie
+        Ihren Weg.
+      </p>
+
+      <!-- Drei-Pfad-Navigation -->
+      <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {
+          paths.map((path) => (
+            <a
+              href={path.href}
+              class={`group relative flex flex-col rounded-2xl border bg-white/5 p-6 backdrop-blur transition-all duration-200 hover:bg-white/10 hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 ${path.border}`}
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <span
+                  class="text-3xl"
+                  role="img"
+                  aria-hidden="true"
+                >
+                  {path.icon}
+                </span>
+                <span class="text-xs font-semibold uppercase tracking-widest text-gray-400">
+                  {path.label}
+                </span>
+              </div>
+              <h2 class="text-xl font-bold text-white mb-2 group-hover:text-brand-200 transition-colors">
+                {path.headline}
+              </h2>
+              <p class="text-sm text-gray-300 flex-grow leading-relaxed">
+                {path.body}
+              </p>
+              <div class="mt-6 flex items-center gap-2 text-sm font-semibold text-brand-300 group-hover:gap-3 transition-all">
+                <span>{path.cta}</span>
+                <span aria-hidden="true">→</span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="border-y border-gray-100 bg-gray-50 py-8" aria-label="Vertrauen & Qualität">
+    <div class="section-container">
+      <ul
+        class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-sm font-medium text-gray-500"
+        role="list"
+      >
+        <li class="flex items-center gap-2">
+          <span aria-hidden="true">✅</span> Lighthouse Performance ≥ 90
+        </li>
+        <li class="flex items-center gap-2">
+          <span aria-hidden="true">♿</span> Barrierefreiheit WCAG 2.1 AA
+        </li>
+        <li class="flex items-center gap-2">
+          <span aria-hidden="true">🇩🇪</span> DSGVO-konform
+        </li>
+        <li class="flex items-center gap-2">
+          <span aria-hidden="true">🚀</span> SEO-optimiert
+        </li>
+        <li class="flex items-center gap-2">
+          <span aria-hidden="true">🤖</span> KI-Integration
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <footer class="bg-gray-900 text-gray-400 py-10" slot="footer">
+    <div class="section-container flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      <span>© {new Date().getFullYear()} IPC24 e.K. — Alle Rechte vorbehalten.</span>
+      <nav aria-label="Footer-Navigation">
+        <ul class="flex gap-6" role="list">
+          <li><a href="/impressum" class="hover:text-white transition-colors">Impressum</a></li>
+          <li><a href="/datenschutz" class="hover:text-white transition-colors">Datenschutz</a></li>
+          <li><a href="/kontakt" class="hover:text-white transition-colors">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</BaseLayout>

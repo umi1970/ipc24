@@ -1,17 +1,4 @@
-
 User-agent: *
-Disallow: 
 Allow: /
-Allow: /services/
-Allow: /services/database/
-Allow: /services/office/
-Allow: /services/ai/
-Allow: /services/web/
-Allow: /services/support/
-Allow: /services/admin/
-Allow: /contact/
-Allow: /impressum/
-Allow: /datenschutz/
-Allow: /agb/
 
 Sitemap: https://ipc24.de/sitemap.xml

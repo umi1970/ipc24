@@ -1,0 +1,39 @@
+[build]
+  command = "npm run build"
+  publish = "dist/"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+# Preview deploys from redesign-astro branch
+[context.redesign-astro]
+  command = "npm run build"
+  publish = "dist/"
+
+# Production stays on main until cutover
+[context.production]
+  branch = "main"
+
+[[redirects]]
+  from = "/sitemap-index.xml"
+  to = "/sitemap.xml"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

@@ -1,3 +1,14 @@
+# Build output
+dist/
+dist-ssr/
+.output/
+
+# Generated types
+.astro/
+
+# Dependencies
+node_modules/
+
 # Logs
 logs
 *.log
@@ -7,18 +18,26 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# OS files
+.DS_Store
+.DS_Store?
 *.local
+Thumbs.db
 
-# Editor directories and files
+# Editor
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Netlify
+.netlify/
