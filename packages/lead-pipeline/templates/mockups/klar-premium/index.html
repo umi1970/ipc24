@@ -5,33 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{branche}} – {{firma}}">
   <title>{{firma}}</title>
+  <!-- Preconnect for async font load -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'brand-black':  '#1A1A1A',
-            'brand-mid':    '#4A4A4A',
-            'brand-light':  '#F8F8F8',
-            'brand-white':  '#FFFFFF',
-            'brand-accent': '#0066FF',
-            'brand-accent-dk': '#0047CC',
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-          letterSpacing: {
-            'ultra': '0.2em',
-          },
-        }
-      }
-    }
-  </script>
+  <!-- Async (non-render-blocking) font load -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap"></noscript>
+  <!-- Precompiled Tailwind CSS -->
+  <link rel="stylesheet" href="./style.css">
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; }
     .hero-overlay {

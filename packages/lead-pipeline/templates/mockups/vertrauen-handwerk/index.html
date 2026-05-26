@@ -5,31 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{branche}} in {{adresse}} – {{firma}}">
   <title>{{firma}} – {{branche}}</title>
+  <!-- Preconnect for async font load -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Lato:wght@400;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Lato:wght@400;700&display=swap">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'brand-wood':     '#8B5A3C',
-            'brand-wood-lt':  '#A67555',
-            'brand-sand':     '#F5F1E8',
-            'brand-dark':     '#3D3328',
-            'brand-concrete': '#A09589',
-            'brand-cream':    '#FDF9F3',
-          },
-          fontFamily: {
-            serif: ['Lora', 'Georgia', 'serif'],
-            sans:  ['Lato', 'system-ui', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
+  <!-- Async (non-render-blocking) font load -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Lato:wght@400;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Lato:wght@400;700&display=swap"></noscript>
+  <!-- Precompiled Tailwind CSS -->
+  <link rel="stylesheet" href="./style.css">
   <style>
     body { font-family: 'Lato', system-ui, sans-serif; }
     h1, h2, h3 { font-family: 'Lora', Georgia, serif; }
@@ -45,7 +28,7 @@
 <body class="bg-brand-sand text-brand-dark antialiased">
 
   <!-- Navigation -->
-  <nav class="bg-brand-cream border-b border-brand-concrete/30 sticky top-0 z-50">
+  <nav class="bg-brand-cream border-b border-brand-concrete-lt/30 sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
       <span class="font-serif font-bold text-brand-dark text-xl">{{firma}}</span>
       <div class="hidden md:flex items-center gap-8 text-sm font-sans text-brand-concrete">
@@ -107,7 +90,7 @@
   </section>
 
   <!-- Über uns & Stärken -->
-  <section id="ueber-uns" class="bg-brand-cream border-y border-brand-concrete/20 py-16">
+  <section id="ueber-uns" class="bg-brand-cream border-y border-brand-concrete-lt/20 py-16">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="font-serif text-3xl font-bold text-brand-dark text-center mb-12">Warum {{firma}}?</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -192,20 +175,20 @@
   <section id="kontakt" class="bg-brand-dark py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="font-serif text-3xl font-bold text-brand-sand text-center mb-4">Kontakt aufnehmen</h2>
-      <p class="text-brand-concrete text-center mb-12">Wir melden uns innerhalb von 24 Stunden zurück.</p>
+      <p class="text-brand-concrete-lt text-center mb-12">Wir melden uns innerhalb von 24 Stunden zurück.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
         <!-- Kontaktdaten -->
         <div class="space-y-6">
           <div>
-            <p class="text-brand-concrete text-xs uppercase tracking-widest mb-1">Adresse</p>
+            <p class="text-brand-concrete-lt text-xs uppercase tracking-widest mb-1">Adresse</p>
             <p class="text-brand-sand font-sans">{{adresse}}</p>
           </div>
           <div>
-            <p class="text-brand-concrete text-xs uppercase tracking-widest mb-1">Telefon</p>
+            <p class="text-brand-concrete-lt text-xs uppercase tracking-widest mb-1">Telefon</p>
             <a href="tel:{{tel}}" class="text-brand-wood-lt font-sans font-bold text-xl hover:text-brand-wood transition-colors focus-visible:outline-2 focus-visible:outline-brand-wood">{{tel}}</a>
           </div>
           <div class="pt-4">
-            <p class="text-brand-concrete text-sm">
+            <p class="text-brand-concrete-lt text-sm">
               Als regionaler {{branche}}-Betrieb sind wir meist direkt erreichbar – und wenn nicht, rufen wir innerhalb eines Werktages zurück.
             </p>
           </div>
@@ -213,19 +196,19 @@
         <!-- Anfrage-Formular -->
         <form class="space-y-4" action="#" method="post" novalidate>
           <div>
-            <label for="name" class="block text-brand-concrete text-sm mb-1">Name *</label>
+            <label for="name" class="block text-brand-concrete-lt text-sm mb-1">Name *</label>
             <input type="text" id="name" name="name" required autocomplete="name"
-                   class="w-full bg-brand-dark/50 border border-brand-concrete/30 rounded px-4 py-3 text-brand-sand placeholder:text-brand-concrete/60 focus:border-brand-wood focus:outline-none focus:ring-1 focus:ring-brand-wood transition-colors">
+                   class="w-full bg-brand-dark/50 border border-brand-concrete-lt/30 rounded px-4 py-3 text-brand-sand placeholder:text-brand-concrete-lt/60 focus:border-brand-wood focus:outline-none focus:ring-1 focus:ring-brand-wood transition-colors">
           </div>
           <div>
-            <label for="tel-input" class="block text-brand-concrete text-sm mb-1">Telefon *</label>
+            <label for="tel-input" class="block text-brand-concrete-lt text-sm mb-1">Telefon *</label>
             <input type="tel" id="tel-input" name="tel" required autocomplete="tel"
-                   class="w-full bg-brand-dark/50 border border-brand-concrete/30 rounded px-4 py-3 text-brand-sand placeholder:text-brand-concrete/60 focus:border-brand-wood focus:outline-none focus:ring-1 focus:ring-brand-wood transition-colors">
+                   class="w-full bg-brand-dark/50 border border-brand-concrete-lt/30 rounded px-4 py-3 text-brand-sand placeholder:text-brand-concrete-lt/60 focus:border-brand-wood focus:outline-none focus:ring-1 focus:ring-brand-wood transition-colors">
           </div>
           <div>
-            <label for="nachricht" class="block text-brand-concrete text-sm mb-1">Ihr Anliegen</label>
+            <label for="nachricht" class="block text-brand-concrete-lt text-sm mb-1">Ihr Anliegen</label>
             <textarea id="nachricht" name="nachricht" rows="4"
-                      class="w-full bg-brand-dark/50 border border-brand-concrete/30 rounded px-4 py-3 text-brand-sand placeholder:text-brand-concrete/60 focus:border-brand-wood focus:outline-none focus:ring-1 focus:ring-brand-wood transition-colors resize-none"></textarea>
+                      class="w-full bg-brand-dark/50 border border-brand-concrete-lt/30 rounded px-4 py-3 text-brand-sand placeholder:text-brand-concrete-lt/60 focus:border-brand-wood focus:outline-none focus:ring-1 focus:ring-brand-wood transition-colors resize-none"></textarea>
           </div>
           <button type="submit"
                   class="w-full bg-brand-wood text-brand-cream font-sans font-bold py-4 rounded hover:bg-brand-wood-lt transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sand">
@@ -237,10 +220,10 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-brand-dark border-t border-brand-concrete/20 py-6">
+  <footer class="bg-brand-dark border-t border-brand-concrete-lt/20 py-6">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-brand-concrete text-sm font-sans">© {{firma}} · {{adresse}}</p>
-      <div class="flex gap-6 text-brand-concrete text-sm">
+      <p class="text-brand-concrete-lt text-sm font-sans">© {{firma}} · {{adresse}}</p>
+      <div class="flex gap-6 text-brand-concrete-lt text-sm">
         <a href="#" class="hover:text-brand-wood transition-colors focus-visible:outline-2 focus-visible:outline-brand-wood">Impressum</a>
         <a href="#" class="hover:text-brand-wood transition-colors focus-visible:outline-2 focus-visible:outline-brand-wood">Datenschutz</a>
       </div>
