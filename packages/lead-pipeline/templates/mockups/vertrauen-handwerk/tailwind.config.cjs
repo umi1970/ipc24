@@ -8,7 +8,7 @@ module.exports = {
         'brand-sand':        '#F5F1E8',
         'brand-dark':        '#3D3328',
         'brand-concrete':    '#5C4D43',
-        'brand-concrete-lt': '#A09589',
+        'brand-concrete-lt': '#C4BAB2',
         'brand-cream':       '#FDF9F3',
       },
       fontFamily: {
