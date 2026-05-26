@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{branche}} in {{adresse}} – {{firma}} · Jetzt anrufen: {{tel}}">
+  <title>{{firma}} – {{branche}} in {{adresse}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600&display=swap">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-fire':     '#FF4500',
+            'brand-fire-dk':  '#CC3700',
+            'brand-black':    '#111111',
+            'brand-charcoal': '#2A2A2A',
+            'brand-gray':     '#F0F0F0',
+            'brand-white':    '#FFFFFF',
+            'brand-muted':    '#888888',
+          },
+          fontFamily: {
+            display: ['"Archivo Black"', 'system-ui', 'sans-serif'],
+            sans:    ['Archivo', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Archivo', system-ui, sans-serif; }
+    h1, h2, h3 { font-family: 'Archivo Black', system-ui, sans-serif; }
+    .hero-stripe {
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 3px,
+        rgba(255,69,0,0.08) 3px,
+        rgba(255,69,0,0.08) 6px
+      );
+    }
+    .ref-img {
+      background: linear-gradient(135deg, #ff6030 0%, #cc3700 100%);
+      aspect-ratio: 4/3;
+    }
+    .map-placeholder {
+      background: linear-gradient(135deg, #d0d0d0 0%, #e8e8e8 50%, #d0d0d0 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .map-placeholder::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(0,0,0,0.04) 20px, rgba(0,0,0,0.04) 21px),
+                  repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(0,0,0,0.04) 20px, rgba(0,0,0,0.04) 21px);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-brand-white text-brand-black antialiased">
+
+  <!-- Top-Bar: Adresse + Tel -->
+  <div class="bg-brand-black text-brand-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col sm:flex-row justify-between items-center gap-1 text-sm">
+      <span class="text-brand-muted text-xs font-sans">{{firma}} · {{adresse}}</span>
+      <a href="tel:{{tel}}"
+         class="text-brand-fire font-sans font-semibold hover:text-brand-white transition-colors focus-visible:outline-2 focus-visible:outline-brand-fire">
+        ☎ {{tel}}
+      </a>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="bg-brand-white border-b-4 border-brand-fire sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <div>
+        <span class="font-display text-brand-black text-xl leading-tight">{{firma}}</span>
+        <p class="text-brand-fire text-xs font-sans font-semibold leading-none">{{branche}}</p>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm font-sans">
+        <a href="#leistungen" class="text-brand-charcoal hover:text-brand-fire transition-colors font-semibold focus-visible:outline-2 focus-visible:outline-brand-fire">Leistungen</a>
+        <a href="#referenzen" class="text-brand-charcoal hover:text-brand-fire transition-colors font-semibold focus-visible:outline-2 focus-visible:outline-brand-fire">Referenzen</a>
+        <a href="#oeffnungszeiten" class="text-brand-charcoal hover:text-brand-fire transition-colors font-semibold focus-visible:outline-2 focus-visible:outline-brand-fire">Öffnungszeiten</a>
+        <a href="#kontakt" class="text-brand-charcoal hover:text-brand-fire transition-colors font-semibold focus-visible:outline-2 focus-visible:outline-brand-fire">Kontakt</a>
+      </div>
+      <a href="tel:{{tel}}"
+         class="bg-brand-fire text-brand-white px-6 py-2.5 font-display text-sm hover:bg-brand-fire-dk transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black">
+        Jetzt anrufen
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative bg-brand-black overflow-hidden">
+    <div class="hero-stripe absolute inset-0"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+      <div class="flex flex-col lg:flex-row gap-12 items-center">
+        <!-- Text-Block -->
+        <div class="flex-1">
+          <div class="inline-block bg-brand-fire text-brand-white text-xs font-sans font-semibold px-3 py-1 mb-6">
+            ▶ Aus {{adresse}} für {{adresse}}
+          </div>
+          <h1 class="font-display text-brand-white text-5xl md:text-6xl lg:text-7xl leading-none mb-6">
+            {{firma}} –<br>
+            <span class="text-brand-fire">Ihr {{branche}}</span><br>
+            vor Ort.
+          </h1>
+          <p class="text-brand-muted text-lg font-sans leading-relaxed mb-10 max-w-lg">
+            Schnell, zuverlässig, fair. Als lokaler Handwerksbetrieb sind wir da, wenn Sie uns brauchen – nicht irgendwann, sondern jetzt.
+          </p>
+          <!-- GROSSER CALL-BUTTON -->
+          <a href="tel:{{tel}}"
+             class="inline-flex items-center gap-4 bg-brand-fire text-brand-white px-8 py-5 font-display text-2xl hover:bg-brand-fire-dk transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-white group">
+            <svg class="w-8 h-8 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.62 10.79z"/>
+            </svg>
+            {{tel}}
+          </a>
+          <p class="text-brand-muted text-sm font-sans mt-4">Kostenloser Rückruf · Mo–Fr 7–18 Uhr, Sa 8–13 Uhr</p>
+        </div>
+        <!-- Hero-Bild -->
+        <div class="w-full lg:w-2/5 flex-shrink-0">
+          <div class="relative">
+            <div class="absolute -inset-2 bg-brand-fire"></div>
+            <img
+              src="{{hero_image}}"
+              alt="Team {{firma}}"
+              class="relative w-full object-cover aspect-[4/3] lg:aspect-[3/4]"
+              loading="eager"
+              onerror="this.style.background='linear-gradient(135deg,#ff6030,#cc3700)';this.removeAttribute('src')"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USP-Streifen -->
+  <section class="bg-brand-fire py-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 text-center">
+        <div class="py-4 sm:border-r border-brand-white/30">
+          <p class="font-display text-brand-white text-3xl leading-none">⚡</p>
+          <p class="font-display text-brand-white text-xl mt-1">Schnell</p>
+          <p class="text-brand-white/80 text-sm font-sans mt-1">Reaktion innerhalb 24h</p>
+        </div>
+        <div class="py-4 sm:border-r border-brand-white/30">
+          <p class="font-display text-brand-white text-3xl leading-none">🏆</p>
+          <p class="font-display text-brand-white text-xl mt-1">Qualität</p>
+          <p class="text-brand-white/80 text-sm font-sans mt-1">Meisterbetrieb mit Garantie</p>
+        </div>
+        <div class="py-4">
+          <p class="font-display text-brand-white text-3xl leading-none">📍</p>
+          <p class="font-display text-brand-white text-xl mt-1">Lokal</p>
+          <p class="text-brand-white/80 text-sm font-sans mt-1">Aus {{adresse}}, für {{adresse}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leistungen -->
+  <section id="leistungen" class="py-16 bg-brand-gray">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-brand-black text-4xl md:text-5xl mb-2">Unsere <span class="text-brand-fire">Leistungen</span></h2>
+      <p class="text-brand-muted font-sans mb-12">Was wir für Sie als {{branche}} in {{adresse}} tun können:</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-brand-white border-l-4 border-brand-fire p-6">
+          <h3 class="font-display text-brand-black text-xl mb-2">{{branche}} Montage</h3>
+          <p class="text-brand-muted text-sm font-sans leading-relaxed">Schnelle, fachgerechte Montage – alles aus einer Hand.</p>
+        </div>
+        <div class="bg-brand-white border-l-4 border-brand-fire p-6">
+          <h3 class="font-display text-brand-black text-xl mb-2">Reparaturen</h3>
+          <p class="text-brand-muted text-sm font-sans leading-relaxed">Notfall-Reparaturen und geplante Instandsetzung – wir kommen.</p>
+        </div>
+        <div class="bg-brand-white border-l-4 border-brand-fire p-6">
+          <h3 class="font-display text-brand-black text-xl mb-2">Wartung</h3>
+          <p class="text-brand-muted text-sm font-sans leading-relaxed">Regelmäßige Wartung schützt Ihre Investition langfristig.</p>
+        </div>
+        <div class="bg-brand-white border-l-4 border-brand-black p-6">
+          <h3 class="font-display text-brand-black text-xl mb-2">Beratung</h3>
+          <p class="text-brand-muted text-sm font-sans leading-relaxed">Kostenlose Erstberatung vor Ort – ohne versteckte Kosten.</p>
+        </div>
+        <div class="bg-brand-white border-l-4 border-brand-black p-6">
+          <h3 class="font-display text-brand-black text-xl mb-2">Neuinstallation</h3>
+          <p class="text-brand-muted text-sm font-sans leading-relaxed">Vom Konzept bis zur fertigen Anlage – alles aus einer Hand.</p>
+        </div>
+        <div class="bg-brand-black p-6 flex flex-col justify-between">
+          <p class="font-display text-brand-fire text-xl mb-4">Jetzt kostenlos anfragen</p>
+          <a href="tel:{{tel}}"
+             class="inline-block bg-brand-fire text-brand-white text-center py-3 font-display hover:bg-brand-fire-dk transition-colors focus-visible:outline-2 focus-visible:outline-brand-fire">
+            ☎ {{tel}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Referenzgalerie -->
+  <section id="referenzen" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-brand-black text-4xl md:text-5xl mb-2">Unsere <span class="text-brand-fire">Arbeiten</span></h2>
+      <p class="text-brand-muted font-sans mb-12">Echte Projekte aus {{adresse}} und Umgebung</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <figure class="group overflow-hidden">
+          <img src="{{referenzen[0].url}}" alt="{{referenzen[0].titel}}" loading="lazy"
+               class="w-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-300 border-2 border-transparent group-hover:border-brand-fire"
+               onerror="this.parentElement.querySelector('.ref-img').classList.remove('hidden');this.remove()">
+          <div class="ref-img hidden"></div>
+          <figcaption class="font-display text-brand-black text-sm mt-2 truncate">{{referenzen[0].titel}}</figcaption>
+        </figure>
+        <figure class="group overflow-hidden">
+          <img src="{{referenzen[1].url}}" alt="{{referenzen[1].titel}}" loading="lazy"
+               class="w-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-300 border-2 border-transparent group-hover:border-brand-fire"
+               onerror="this.parentElement.querySelector('.ref-img').classList.remove('hidden');this.remove()">
+          <div class="ref-img hidden"></div>
+          <figcaption class="font-display text-brand-black text-sm mt-2 truncate">{{referenzen[1].titel}}</figcaption>
+        </figure>
+        <figure class="group overflow-hidden">
+          <img src="{{referenzen[2].url}}" alt="{{referenzen[2].titel}}" loading="lazy"
+               class="w-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-300 border-2 border-transparent group-hover:border-brand-fire"
+               onerror="this.parentElement.querySelector('.ref-img').classList.remove('hidden');this.remove()">
+          <div class="ref-img hidden"></div>
+          <figcaption class="font-display text-brand-black text-sm mt-2 truncate">{{referenzen[2].titel}}</figcaption>
+        </figure>
+        <figure class="group overflow-hidden">
+          <img src="{{referenzen[3].url}}" alt="{{referenzen[3].titel}}" loading="lazy"
+               class="w-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-300 border-2 border-transparent group-hover:border-brand-fire"
+               onerror="this.parentElement.querySelector('.ref-img').classList.remove('hidden');this.remove()">
+          <div class="ref-img hidden"></div>
+          <figcaption class="font-display text-brand-black text-sm mt-2 truncate">{{referenzen[3].titel}}</figcaption>
+        </figure>
+        <figure class="group overflow-hidden">
+          <img src="{{referenzen[4].url}}" alt="{{referenzen[4].titel}}" loading="lazy"
+               class="w-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-300 border-2 border-transparent group-hover:border-brand-fire"
+               onerror="this.parentElement.querySelector('.ref-img').classList.remove('hidden');this.remove()">
+          <div class="ref-img hidden"></div>
+          <figcaption class="font-display text-brand-black text-sm mt-2 truncate">{{referenzen[4].titel}}</figcaption>
+        </figure>
+        <figure class="group overflow-hidden">
+          <img src="{{referenzen[5].url}}" alt="{{referenzen[5].titel}}" loading="lazy"
+               class="w-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-300 border-2 border-transparent group-hover:border-brand-fire"
+               onerror="this.parentElement.querySelector('.ref-img').classList.remove('hidden');this.remove()">
+          <div class="ref-img hidden"></div>
+          <figcaption class="font-display text-brand-black text-sm mt-2 truncate">{{referenzen[5].titel}}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Öffnungszeiten + Map -->
+  <section id="oeffnungszeiten" class="bg-brand-black py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Öffnungszeiten -->
+        <div>
+          <h2 class="font-display text-brand-white text-4xl mb-8">Öffnungs<span class="text-brand-fire">zeiten</span></h2>
+          <div class="space-y-0">
+            <div class="flex justify-between items-center py-4 border-b border-brand-charcoal">
+              <span class="font-sans text-brand-white font-semibold">Montag – Freitag</span>
+              <span class="font-display text-brand-fire text-lg">07:00 – 18:00</span>
+            </div>
+            <div class="flex justify-between items-center py-4 border-b border-brand-charcoal">
+              <span class="font-sans text-brand-white font-semibold">Samstag</span>
+              <span class="font-display text-brand-fire text-lg">08:00 – 13:00</span>
+            </div>
+            <div class="flex justify-between items-center py-4 border-b border-brand-charcoal">
+              <span class="font-sans text-brand-white font-semibold">Sonntag</span>
+              <span class="font-sans text-brand-muted">Geschlossen</span>
+            </div>
+            <div class="flex justify-between items-center py-4">
+              <span class="font-sans text-brand-white font-semibold">Notfall-Service</span>
+              <span class="font-display text-brand-fire text-lg">24/7</span>
+            </div>
+          </div>
+          <div class="mt-8 bg-brand-charcoal p-6">
+            <p class="font-sans text-brand-muted text-sm leading-relaxed">
+              <strong class="text-brand-white">{{firma}}</strong><br>
+              {{adresse}}<br>
+              <a href="tel:{{tel}}" class="text-brand-fire hover:text-brand-white transition-colors focus-visible:outline-2 focus-visible:outline-brand-fire">{{tel}}</a>
+            </p>
+          </div>
+        </div>
+        <!-- Karten-Placeholder -->
+        <div>
+          <h2 class="font-display text-brand-white text-4xl mb-8">So finden <span class="text-brand-fire">Sie uns</span></h2>
+          <div class="map-placeholder h-64 lg:h-80 rounded-sm flex items-center justify-center relative">
+            <div class="relative z-10 text-center">
+              <div class="w-12 h-12 bg-brand-fire rounded-full mx-auto mb-3 flex items-center justify-center">
+                <svg class="w-6 h-6 text-brand-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+              </div>
+              <p class="font-display text-brand-black text-sm">{{adresse}}</p>
+            </div>
+          </div>
+          <p class="text-brand-muted text-xs font-sans mt-2 text-center">Karte wird bei Seitenaufruf des Kunden geladen</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt CTA -->
+  <section id="kontakt" class="py-16 bg-brand-fire">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-display text-brand-white text-4xl md:text-5xl mb-4">Jetzt <span class="underline decoration-4">anrufen!</span></h2>
+      <p class="text-brand-white/80 font-sans text-lg mb-8">Kein langes Warten – wir sind für Sie da.</p>
+      <a href="tel:{{tel}}"
+         class="inline-flex items-center gap-4 bg-brand-white text-brand-fire px-10 py-5 font-display text-3xl hover:bg-brand-gray transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.62 10.79z"/>
+        </svg>
+        {{tel}}
+      </a>
+      <p class="text-brand-white/70 font-sans text-sm mt-6">Oder schreiben Sie uns: <a href="#" class="underline hover:text-brand-white focus-visible:outline-2 focus-visible:outline-brand-white">info@{{firma|slug}}.de</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-brand-charcoal border-t border-brand-black py-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-brand-muted text-sm font-sans">© {{firma}} · {{adresse}} · <a href="tel:{{tel}}" class="text-brand-fire hover:text-brand-white transition-colors focus-visible:outline-2 focus-visible:outline-brand-fire">{{tel}}</a></p>
+      <div class="flex gap-6 text-brand-muted text-sm font-sans">
+        <a href="#" class="hover:text-brand-white transition-colors focus-visible:outline-2 focus-visible:outline-brand-fire">Impressum</a>
+        <a href="#" class="hover:text-brand-white transition-colors focus-visible:outline-2 focus-visible:outline-brand-fire">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

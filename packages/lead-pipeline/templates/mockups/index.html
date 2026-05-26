@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPC24 – Mockup Template Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'ipc-blue':   '#0072C6',
+            'ipc-orange': '#FF8C00',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: system-ui, sans-serif; }
+    .template-frame {
+      width: 1280px;
+      height: 800px;
+      border: none;
+      transform-origin: top left;
+      display: block;
+    }
+    .frame-wrapper {
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+      background: #f0f0f0;
+      position: relative;
+    }
+    .mobile-frame {
+      width: 390px;
+      height: 844px;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-gray-900 text-white px-6 py-4 flex items-center justify-between">
+    <div>
+      <span class="font-bold text-ipc-orange text-lg">IPC24</span>
+      <span class="text-gray-400 text-sm ml-3">Template Preview · Lead-Pipeline</span>
+    </div>
+    <div class="flex gap-3">
+      <button id="btn-desktop" onclick="setViewport('desktop')"
+              class="px-4 py-1.5 text-sm bg-ipc-blue text-white rounded hover:bg-blue-700 transition-colors">
+        Desktop
+      </button>
+      <button id="btn-mobile" onclick="setViewport('mobile')"
+              class="px-4 py-1.5 text-sm bg-gray-700 text-white rounded hover:bg-gray-600 transition-colors">
+        Mobile
+      </button>
+    </div>
+  </header>
+
+  <!-- Demo-Daten Panel -->
+  <div class="bg-gray-800 text-white px-6 py-3">
+    <details class="text-sm">
+      <summary class="cursor-pointer text-ipc-orange font-semibold hover:text-orange-400">Demo-Daten anpassen</summary>
+      <div class="mt-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div>
+          <label class="block text-gray-400 text-xs mb-1">Firma</label>
+          <input id="d-firma" type="text" value="Müller Sanitär GmbH"
+                 class="w-full bg-gray-700 text-white text-xs px-2 py-1.5 rounded border border-gray-600 focus:border-ipc-blue focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-gray-400 text-xs mb-1">Branche</label>
+          <input id="d-branche" type="text" value="Sanitär & Heizung"
+                 class="w-full bg-gray-700 text-white text-xs px-2 py-1.5 rounded border border-gray-600 focus:border-ipc-blue focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-gray-400 text-xs mb-1">Telefon</label>
+          <input id="d-tel" type="text" value="0721 / 123 456 78"
+                 class="w-full bg-gray-700 text-white text-xs px-2 py-1.5 rounded border border-gray-600 focus:border-ipc-blue focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-gray-400 text-xs mb-1">Adresse/Ort</label>
+          <input id="d-adresse" type="text" value="Karlsruhe"
+                 class="w-full bg-gray-700 text-white text-xs px-2 py-1.5 rounded border border-gray-600 focus:border-ipc-blue focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-gray-400 text-xs mb-1">Hero-Bild URL</label>
+          <input id="d-hero" type="text" value=""
+                 placeholder="https://..."
+                 class="w-full bg-gray-700 text-white text-xs px-2 py-1.5 rounded border border-gray-600 focus:border-ipc-blue focus:outline-none">
+        </div>
+        <div class="flex items-end">
+          <button onclick="reloadFrames()"
+                  class="w-full bg-ipc-orange text-white text-xs px-3 py-1.5 rounded hover:bg-orange-600 transition-colors font-semibold">
+            Vorschau aktualisieren
+          </button>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Templates -->
+  <main class="px-6 py-8 space-y-16 max-w-[1400px] mx-auto">
+
+    <!-- Template 1 -->
+    <section>
+      <div class="flex items-baseline gap-4 mb-4">
+        <h2 class="text-2xl font-bold text-gray-800">1 · Vertrauen &amp; Handwerk</h2>
+        <span class="text-sm text-gray-500">Warm · Persönlich · Traditionsbewusst</span>
+        <a href="vertrauen-handwerk/index.html" target="_blank"
+           class="ml-auto text-sm text-ipc-blue hover:underline">Vollbild öffnen →</a>
+      </div>
+      <div id="wrap-1" class="frame-wrapper" style="height:500px">
+        <iframe id="frame-1" src="about:blank" class="template-frame" title="Template Vertrauen & Handwerk"></iframe>
+      </div>
+      <div class="mt-3 bg-white border border-gray-200 rounded p-4 text-sm text-gray-600">
+        <strong class="text-gray-800">Pitch:</strong>
+        Warme Holz-/Beton-Farbwelt mit Inhaber-Porträt und Serif-Schrift – ideal für Privatkunden, die Vertrauen und Nähe suchen.
+      </div>
+    </section>
+
+    <!-- Template 2 -->
+    <section>
+      <div class="flex items-baseline gap-4 mb-4">
+        <h2 class="text-2xl font-bold text-gray-800">2 · Klar &amp; Premium</h2>
+        <span class="text-sm text-gray-500">Minimalistisch · Hochwertig · B2B-tauglich</span>
+        <a href="klar-premium/index.html" target="_blank"
+           class="ml-auto text-sm text-ipc-blue hover:underline">Vollbild öffnen →</a>
+      </div>
+      <div id="wrap-2" class="frame-wrapper" style="height:500px">
+        <iframe id="frame-2" src="about:blank" class="template-frame" title="Template Klar & Premium"></iframe>
+      </div>
+      <div class="mt-3 bg-white border border-gray-200 rounded p-4 text-sm text-gray-600">
+        <strong class="text-gray-800">Pitch:</strong>
+        Schwarz-Weiß mit Blau-Akzent, Display-Typografie und Full-Bleed-Hero – konvertiert bei Bauträgern und anspruchsvollen Geschäftskunden.
+      </div>
+    </section>
+
+    <!-- Template 3 -->
+    <section>
+      <div class="flex items-baseline gap-4 mb-4">
+        <h2 class="text-2xl font-bold text-gray-800">3 · Bold &amp; Lokal</h2>
+        <span class="text-sm text-gray-500">Laut · Regional · Conversion-First</span>
+        <a href="bold-lokal/index.html" target="_blank"
+           class="ml-auto text-sm text-ipc-blue hover:underline">Vollbild öffnen →</a>
+      </div>
+      <div id="wrap-3" class="frame-wrapper" style="height:500px">
+        <iframe id="frame-3" src="about:blank" class="template-frame" title="Template Bold & Lokal"></iframe>
+      </div>
+      <div class="mt-3 bg-white border border-gray-200 rounded p-4 text-sm text-gray-600">
+        <strong class="text-gray-800">Pitch:</strong>
+        Feuer-Orange auf Schwarz, XXL-Telefon-CTA und Archivo Black – maximaler Lokalstolz und sofortige Handlungsaufforderung für Privatkunden.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-500 text-xs text-center py-4 mt-8">
+    IPC24 Lead-Pipeline · Template Preview · Platzhalter werden mit Demo-Daten ersetzt
+  </footer>
+
+  <script>
+    const TEMPLATES = [
+      'vertrauen-handwerk/index.html',
+      'klar-premium/index.html',
+      'bold-lokal/index.html',
+    ];
+
+    const DEMO_REFS = [
+      { url: '', titel: 'Badezimmer-Sanierung Privathaus' },
+      { url: '', titel: 'Heizungsanlage Neubau' },
+      { url: '', titel: 'Rohr-Erneuerung Altbau' },
+      { url: '', titel: 'Druckprüfung Industrieanlage' },
+      { url: '', titel: 'Fußbodenheizung Einfamilienhaus' },
+      { url: '', titel: 'Warmwasseraufbereitung Gewerbe' },
+    ];
+
+    let currentViewport = 'desktop';
+
+    function getDemoData() {
+      return {
+        firma:   document.getElementById('d-firma').value   || 'Müller Sanitär GmbH',
+        branche: document.getElementById('d-branche').value || 'Sanitär & Heizung',
+        tel:     document.getElementById('d-tel').value     || '0721 / 123 456 78',
+        adresse: document.getElementById('d-adresse').value || 'Karlsruhe',
+        hero_image: document.getElementById('d-hero').value || '',
+        'referenzen[0].url':   DEMO_REFS[0].url,
+        'referenzen[0].titel': DEMO_REFS[0].titel,
+        'referenzen[1].url':   DEMO_REFS[1].url,
+        'referenzen[1].titel': DEMO_REFS[1].titel,
+        'referenzen[2].url':   DEMO_REFS[2].url,
+        'referenzen[2].titel': DEMO_REFS[2].titel,
+        'referenzen[3].url':   DEMO_REFS[3].url,
+        'referenzen[3].titel': DEMO_REFS[3].titel,
+        'referenzen[4].url':   DEMO_REFS[4].url,
+        'referenzen[4].titel': DEMO_REFS[4].titel,
+        'referenzen[5].url':   DEMO_REFS[5].url,
+        'referenzen[5].titel': DEMO_REFS[5].titel,
+        'firma|slug': (document.getElementById('d-firma').value || 'muelle-sanitaer').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+      };
+    }
+
+    function substituteVars(html, data) {
+      return html.replace(/\{\{([^}]+)\}\}/g, (_, key) => {
+        const k = key.trim();
+        return Object.prototype.hasOwnProperty.call(data, k) ? data[k] : `{{${k}}}`;
+      });
+    }
+
+    async function loadTemplate(path, data) {
+      try {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error(res.statusText);
+        const html = await res.text();
+        return substituteVars(html, data);
+      } catch (e) {
+        return `<html><body style="font:14px sans-serif;padding:2rem;color:#666">Fehler beim Laden: ${path}<br>${e.message}</body></html>`;
+      }
+    }
+
+    function setScale(frameId, wrapperId, viewport) {
+      const frame  = document.getElementById(frameId);
+      const wrap   = document.getElementById(wrapperId);
+      if (viewport === 'mobile') {
+        frame.classList.add('mobile-frame');
+        frame.classList.remove('template-frame');
+        frame.style.width  = '390px';
+        frame.style.height = '844px';
+        const scale = Math.min(wrap.clientWidth / 390, 1);
+        frame.style.transform = `scale(${scale})`;
+        wrap.style.height = Math.round(844 * scale) + 'px';
+      } else {
+        frame.classList.add('template-frame');
+        frame.classList.remove('mobile-frame');
+        frame.style.width  = '1280px';
+        frame.style.height = '800px';
+        const scale = wrap.clientWidth / 1280;
+        frame.style.transform = `scale(${scale})`;
+        wrap.style.height = Math.round(800 * scale) + 'px';
+      }
+    }
+
+    async function reloadFrames() {
+      const data = getDemoData();
+      for (let i = 0; i < TEMPLATES.length; i++) {
+        const n = i + 1;
+        const html = await loadTemplate(TEMPLATES[i], data);
+        const frame = document.getElementById(`frame-${n}`);
+        frame.srcdoc = html;
+        setScale(`frame-${n}`, `wrap-${n}`, currentViewport);
+      }
+    }
+
+    function setViewport(vp) {
+      currentViewport = vp;
+      document.getElementById('btn-desktop').className =
+        vp === 'desktop'
+          ? 'px-4 py-1.5 text-sm bg-ipc-blue text-white rounded hover:bg-blue-700 transition-colors'
+          : 'px-4 py-1.5 text-sm bg-gray-700 text-white rounded hover:bg-gray-600 transition-colors';
+      document.getElementById('btn-mobile').className =
+        vp === 'mobile'
+          ? 'px-4 py-1.5 text-sm bg-ipc-blue text-white rounded hover:bg-blue-700 transition-colors'
+          : 'px-4 py-1.5 text-sm bg-gray-700 text-white rounded hover:bg-gray-600 transition-colors';
+      for (let i = 1; i <= 3; i++) {
+        setScale(`frame-${i}`, `wrap-${i}`, vp);
+      }
+    }
+
+    window.addEventListener('load', reloadFrames);
+    window.addEventListener('resize', () => {
+      for (let i = 1; i <= 3; i++) {
+        setScale(`frame-${i}`, `wrap-${i}`, currentViewport);
+      }
+    });
+  </script>
+
+</body>
+</html>

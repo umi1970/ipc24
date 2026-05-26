@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{branche}} – {{firma}}">
+  <title>{{firma}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-black':  '#1A1A1A',
+            'brand-mid':    '#4A4A4A',
+            'brand-light':  '#F8F8F8',
+            'brand-white':  '#FFFFFF',
+            'brand-accent': '#0066FF',
+            'brand-accent-dk': '#0047CC',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            'ultra': '0.2em',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero-overlay {
+      background: linear-gradient(to right, rgba(26,26,26,0.85) 40%, rgba(26,26,26,0.3) 100%);
+    }
+    .hero-bg {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #0f0f0f 100%);
+    }
+    .ref-img {
+      background: linear-gradient(135deg, #d0d0d0 0%, #a0a0a0 100%);
+      aspect-ratio: 3/2;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-brand-white text-brand-black antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-brand-white/95 backdrop-blur-sm border-b border-black/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-18 py-5">
+      <span class="font-sans font-bold text-brand-black text-lg tracking-tight">{{firma}}</span>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#leistungen" class="text-sm text-brand-mid hover:text-brand-black transition-colors tracking-wide focus-visible:outline-2 focus-visible:outline-brand-accent">Leistungen</a>
+        <a href="#projekte" class="text-sm text-brand-mid hover:text-brand-black transition-colors tracking-wide focus-visible:outline-2 focus-visible:outline-brand-accent">Projekte</a>
+        <a href="#kontakt" class="text-sm text-brand-mid hover:text-brand-black transition-colors tracking-wide focus-visible:outline-2 focus-visible:outline-brand-accent">Kontakt</a>
+        <a href="tel:{{tel}}"
+           class="bg-brand-accent text-brand-white px-5 py-2.5 text-sm font-semibold hover:bg-brand-accent-dk transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent">
+          Anfragen
+        </a>
+      </div>
+      <!-- Mobile CTA -->
+      <a href="tel:{{tel}}" class="md:hidden bg-brand-accent text-brand-white px-4 py-2 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent">
+        Anruf
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero: Full-bleed mit Foto-Hintergrund -->
+  <section class="relative min-h-screen flex items-center pt-18 overflow-hidden">
+    <div class="absolute inset-0 hero-bg">
+      <img
+        src="{{hero_image}}"
+        alt=""
+        role="presentation"
+        class="w-full h-full object-cover opacity-40 mix-blend-luminosity"
+        loading="eager"
+      >
+    </div>
+    <div class="hero-overlay absolute inset-0"></div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-24">
+      <p class="text-brand-accent text-xs font-semibold tracking-ultra uppercase mb-8">{{branche}}</p>
+      <h1 class="font-sans font-black text-brand-white text-5xl md:text-7xl lg:text-8xl leading-none tracking-tight max-w-3xl mb-8">
+        {{firma}}
+      </h1>
+      <p class="text-brand-white/70 text-lg md:text-xl font-light max-w-xl leading-relaxed mb-12">
+        Professionelle {{branche}}-Leistungen für anspruchsvolle Projekte in {{adresse}} und Umgebung.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#kontakt"
+           class="inline-flex items-center justify-center bg-brand-accent text-brand-white px-10 py-4 text-sm font-semibold tracking-wide hover:bg-brand-accent-dk transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-white">
+          Projekt besprechen
+        </a>
+        <a href="tel:{{tel}}"
+           class="inline-flex items-center justify-center border border-brand-white/40 text-brand-white px-10 py-4 text-sm font-semibold tracking-wide hover:border-brand-white/80 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-white">
+          {{tel}}
+        </a>
+      </div>
+    </div>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-brand-white/40" aria-hidden="true">
+      <span class="text-xs tracking-widest uppercase">Scroll</span>
+      <div class="w-px h-12 bg-brand-white/20"></div>
+    </div>
+  </section>
+
+  <!-- Leistungen -->
+  <section id="leistungen" class="py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+        <div>
+          <p class="text-brand-accent text-xs font-semibold tracking-ultra uppercase mb-6">Leistungsspektrum</p>
+          <h2 class="font-sans font-black text-brand-black text-4xl md:text-5xl leading-none tracking-tight mb-6">
+            Was wir<br>für Sie tun.
+          </h2>
+          <p class="text-brand-mid text-lg font-light leading-relaxed">
+            Als spezialisierter {{branche}}-Betrieb liefern wir Qualitätsarbeit, die dauerhaft überzeugt. Klar kalkuliert, termingerecht ausgeführt.
+          </p>
+        </div>
+        <div class="space-y-6">
+          <div class="flex gap-6 items-start border-t border-black/10 pt-6">
+            <span class="text-brand-accent font-black text-2xl leading-none mt-1 w-8 flex-shrink-0">01</span>
+            <div>
+              <h3 class="font-sans font-semibold text-brand-black text-lg mb-1">{{branche}} Planung</h3>
+              <p class="text-brand-mid text-sm font-light leading-relaxed">Individuelle Beratung und Konzeptentwicklung für Ihr Vorhaben.</p>
+            </div>
+          </div>
+          <div class="flex gap-6 items-start border-t border-black/10 pt-6">
+            <span class="text-brand-accent font-black text-2xl leading-none mt-1 w-8 flex-shrink-0">02</span>
+            <div>
+              <h3 class="font-sans font-semibold text-brand-black text-lg mb-1">Professionelle Ausführung</h3>
+              <p class="text-brand-mid text-sm font-light leading-relaxed">Handwerkliche Perfektion mit modernsten Materialien und Methoden.</p>
+            </div>
+          </div>
+          <div class="flex gap-6 items-start border-t border-black/10 pt-6">
+            <span class="text-brand-accent font-black text-2xl leading-none mt-1 w-8 flex-shrink-0">03</span>
+            <div>
+              <h3 class="font-sans font-semibold text-brand-black text-lg mb-1">Nachbetreuung</h3>
+              <p class="text-brand-mid text-sm font-light leading-relaxed">Auch nach Projektabschluss sind wir für Sie da – zuverlässig und unkompliziert.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projekte / Referenzen -->
+  <section id="projekte" class="bg-brand-light py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <p class="text-brand-accent text-xs font-semibold tracking-ultra uppercase mb-6">Referenzen</p>
+      <h2 class="font-sans font-black text-brand-black text-4xl md:text-5xl leading-none tracking-tight mb-16 max-w-xl">
+        Ausgewählte<br>Projekte.
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+        <figure class="group overflow-hidden relative">
+          <img src="{{referenzen[0].url}}" alt="{{referenzen[0].titel}}" loading="lazy"
+               class="w-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500"
+               onerror="this.parentElement.querySelector('.ref-img').classList.remove('hidden');this.remove()">
+          <div class="ref-img hidden"></div>
+          <figcaption class="absolute bottom-0 left-0 right-0 bg-brand-black/80 text-brand-white text-sm font-light px-4 py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            {{referenzen[0].titel}}
+          </figcaption>
+        </figure>
+        <figure class="group overflow-hidden relative md:mt-12">
+          <img src="{{referenzen[1].url}}" alt="{{referenzen[1].titel}}" loading="lazy"
+               class="w-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500"
+               onerror="this.parentElement.querySelector('.ref-img').classList.remove('hidden');this.remove()">
+          <div class="ref-img hidden"></div>
+          <figcaption class="absolute bottom-0 left-0 right-0 bg-brand-black/80 text-brand-white text-sm font-light px-4 py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            {{referenzen[1].titel}}
+          </figcaption>
+        </figure>
+        <figure class="group overflow-hidden relative">
+          <img src="{{referenzen[2].url}}" alt="{{referenzen[2].titel}}" loading="lazy"
+               class="w-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500"
+               onerror="this.parentElement.querySelector('.ref-img').classList.remove('hidden');this.remove()">
+          <div class="ref-img hidden"></div>
+          <figcaption class="absolute bottom-0 left-0 right-0 bg-brand-black/80 text-brand-white text-sm font-light px-4 py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            {{referenzen[2].titel}}
+          </figcaption>
+        </figure>
+        <figure class="group overflow-hidden relative">
+          <img src="{{referenzen[3].url}}" alt="{{referenzen[3].titel}}" loading="lazy"
+               class="w-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500"
+               onerror="this.parentElement.querySelector('.ref-img').classList.remove('hidden');this.remove()">
+          <div class="ref-img hidden"></div>
+          <figcaption class="absolute bottom-0 left-0 right-0 bg-brand-black/80 text-brand-white text-sm font-light px-4 py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            {{referenzen[3].titel}}
+          </figcaption>
+        </figure>
+        <figure class="group overflow-hidden relative md:mt-12">
+          <img src="{{referenzen[4].url}}" alt="{{referenzen[4].titel}}" loading="lazy"
+               class="w-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500"
+               onerror="this.parentElement.querySelector('.ref-img').classList.remove('hidden');this.remove()">
+          <div class="ref-img hidden"></div>
+          <figcaption class="absolute bottom-0 left-0 right-0 bg-brand-black/80 text-brand-white text-sm font-light px-4 py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            {{referenzen[4].titel}}
+          </figcaption>
+        </figure>
+        <figure class="group overflow-hidden relative">
+          <img src="{{referenzen[5].url}}" alt="{{referenzen[5].titel}}" loading="lazy"
+               class="w-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500"
+               onerror="this.parentElement.querySelector('.ref-img').classList.remove('hidden');this.remove()">
+          <div class="ref-img hidden"></div>
+          <figcaption class="absolute bottom-0 left-0 right-0 bg-brand-black/80 text-brand-white text-sm font-light px-4 py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            {{referenzen[5].titel}}
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA-Streifen -->
+  <section class="bg-brand-accent py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
+      <h2 class="font-sans font-black text-brand-white text-3xl md:text-4xl leading-none tracking-tight">
+        Bereit für Ihr nächstes Projekt?
+      </h2>
+      <a href="#kontakt"
+         class="flex-shrink-0 bg-brand-white text-brand-accent font-semibold px-10 py-4 text-sm tracking-wide hover:bg-brand-light transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-white">
+        Jetzt Kontakt aufnehmen
+      </a>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt" class="py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div>
+          <p class="text-brand-accent text-xs font-semibold tracking-ultra uppercase mb-6">Kontakt</p>
+          <h2 class="font-sans font-black text-brand-black text-4xl leading-none tracking-tight mb-8">Sprechen wir.</h2>
+          <div class="space-y-6 text-brand-mid">
+            <div>
+              <p class="text-xs font-semibold tracking-ultra uppercase text-brand-black mb-1">Adresse</p>
+              <p class="font-light">{{adresse}}</p>
+            </div>
+            <div>
+              <p class="text-xs font-semibold tracking-ultra uppercase text-brand-black mb-1">Telefon</p>
+              <a href="tel:{{tel}}" class="font-semibold text-brand-accent text-xl hover:text-brand-accent-dk transition-colors focus-visible:outline-2 focus-visible:outline-brand-accent">{{tel}}</a>
+            </div>
+          </div>
+        </div>
+        <form class="space-y-6" action="#" method="post" novalidate>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-xs font-semibold tracking-ultra uppercase text-brand-black mb-2">Name *</label>
+              <input type="text" id="name" name="name" required autocomplete="name"
+                     class="w-full border-b border-black/20 py-3 text-brand-black placeholder:text-brand-mid/50 focus:border-brand-accent focus:outline-none transition-colors bg-transparent font-light">
+            </div>
+            <div>
+              <label for="tel-input" class="block text-xs font-semibold tracking-ultra uppercase text-brand-black mb-2">Telefon *</label>
+              <input type="tel" id="tel-input" name="tel" required autocomplete="tel"
+                     class="w-full border-b border-black/20 py-3 text-brand-black placeholder:text-brand-mid/50 focus:border-brand-accent focus:outline-none transition-colors bg-transparent font-light">
+            </div>
+          </div>
+          <div>
+            <label for="nachricht" class="block text-xs font-semibold tracking-ultra uppercase text-brand-black mb-2">Nachricht</label>
+            <textarea id="nachricht" name="nachricht" rows="4"
+                      class="w-full border-b border-black/20 py-3 text-brand-black placeholder:text-brand-mid/50 focus:border-brand-accent focus:outline-none transition-colors bg-transparent font-light resize-none"></textarea>
+          </div>
+          <button type="submit"
+                  class="bg-brand-black text-brand-white px-10 py-4 text-sm font-semibold tracking-wide hover:bg-brand-mid transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent">
+            Anfrage senden
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-black/10 py-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-brand-mid text-xs tracking-wide font-light">© {{firma}} · {{adresse}}</p>
+      <div class="flex gap-8 text-brand-mid text-xs tracking-wide font-light">
+        <a href="#" class="hover:text-brand-black transition-colors focus-visible:outline-2 focus-visible:outline-brand-accent">Impressum</a>
+        <a href="#" class="hover:text-brand-black transition-colors focus-visible:outline-2 focus-visible:outline-brand-accent">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
