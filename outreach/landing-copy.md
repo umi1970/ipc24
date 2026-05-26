@@ -302,7 +302,7 @@ Wer steckt hinter IPC24?
 ### Text (2 Sätze)
 
 ```
-IPC24 ist ein Karlsruher Web-Studio, das sich auf lokale Handwerksbetriebe spezialisiert hat –
+IPC24 ist ein Web-Studio aus Waghäusel, das sich auf lokale Handwerksbetriebe spezialisiert hat –
 von der ersten Idee bis zur fertigen Website, die Kunden überzeugt.
 
 Unser USP: Wir veredeln Ihre vorhandenen Fotos mit KI –
@@ -345,7 +345,7 @@ Kein Risiko · Keine Vorauszahlung · Festpreis garantiert
 ## 8. Footer
 
 ```
-© 2026 IPC24 · Web-Studio Karlsruhe
+© 2026 IPC24 e.K. · Erzbergerstraße 28 · 68753 Waghäusel
 
 [Impressum](https://ipc24.de/impressum) · [Datenschutz](https://ipc24.de/datenschutz)
 

@@ -11,12 +11,12 @@
 ## Briefkopf (IPC24)
 
 ```
-IPC24 · Web-Studio Karlsruhe
-{{strasse}}
-{{plz}} Karlsruhe
+IPC24 e.K.
+Erzbergerstraße 28
+68753 Waghäusel
 
-Tel.: {{telefon_ipc24}}
-E-Mail: {{email_ipc24}}
+Tel.: 01590 619 4455
+E-Mail: info@ipc24.de
 Web: ipc24.de
 ```
 
@@ -32,7 +32,7 @@ Ringstraße 46
 ## Datum / Betreff
 
 ```
-Karlsruhe, 26. Mai 2026
+Waghäusel, 26. Mai 2026
 
 Betreff: Vorschlag für Ihre Website www.jw-stuck.de — 3 kostenlose Design-Ideen
 ```
@@ -68,8 +68,8 @@ Wenn Sie neugierig sind, zeige ich Ihnen die Varianten gerne in
 
 Sie erreichen mich werktags unter:
 
-  Telefon:  {{telefon_ipc24}}
-  E-Mail:   {{email_ipc24}}
+  Telefon:  01590 619 4455
+  E-Mail:   info@ipc24.de
   Termin:   calendly.com/ipc24/20min
 
 Falls für Sie aktuell kein Bedarf besteht, ist das selbstverständlich
@@ -77,8 +77,8 @@ vollkommen in Ordnung — Sie hören dann nichts weiter von uns.
 
 Mit freundlichen Grüßen
 
-{{absender_name}}
-IPC24 · Web-Studio Karlsruhe
+Ümit Zobu
+IPC24 e.K. · Web-Studio Waghäusel
 ```
 
 ## Fußzeile / Widerspruchshinweis (DSGVO)
@@ -90,7 +90,8 @@ Ihrer Adresse für werbliche Zwecke jederzeit formlos widersprechen
 (Telefon, Post oder E-Mail an obige Adresse) — wir entfernen Sie dann
 umgehend aus unserer Liste.
 
-IPC24 · Web-Studio Karlsruhe · Impressum: ipc24.de/impressum
+IPC24 e.K. · Erzbergerstraße 28 · 68753 Waghäusel · USt-ID DE234142988
+Impressum: ipc24.de/impressum
 ```
 
 ---
@@ -103,11 +104,3 @@ IPC24 · Web-Studio Karlsruhe · Impressum: ipc24.de/impressum
 - **Wenn keine Reaktion nach 14 Tagen:** Lead → Status `abgelehnt`, kein Follow-up.
 - **Wenn Reaktion:** Mockups (Variante 1–3) generieren, Landing-Page `ipc24.de/m/jens-weber-stuck` bauen, dann persönliches Gespräch.
 
-## Platzhalter zum Befüllen vor Druck
-
-| Platzhalter | Vorschlag / Quelle |
-|---|---|
-| `{{strasse}}` / `{{plz}}` | IPC24-Firmenadresse Karlsruhe |
-| `{{telefon_ipc24}}` | IPC24-Geschäftstelefon |
-| `{{email_ipc24}}` | z.B. `hallo@ipc24.de` |
-| `{{absender_name}}` | Vor- + Nachname des Absenders bei IPC24 |
