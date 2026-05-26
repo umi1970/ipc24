@@ -1,0 +1,25 @@
+{
+  "name": "@ipc24/lead-pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Lead-Discovery + Site-Audit pipeline for the Website-Makeover-Akquise (Karlsruhe handwerker).",
+  "scripts": {
+    "lead-discovery": "tsx src/bin/lead-discovery.ts",
+    "audit-batch": "tsx src/bin/audit-batch.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "chrome-launcher": "^1.1.2",
+    "lighthouse": "^12.2.1",
+    "playwright": "^1.48.0",
+    "tsx": "^4.19.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "typescript": "^5.5.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

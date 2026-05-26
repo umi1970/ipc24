@@ -9,7 +9,9 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "preview-templates": "npx serve packages/lead-pipeline/templates/mockups -l 3333 --no-clipboard"
+    "preview-templates": "npx serve packages/lead-pipeline/templates/mockups -l 3333 --no-clipboard",
+    "lead-discovery": "npm --prefix packages/lead-pipeline run lead-discovery --",
+    "audit-batch": "npm --prefix packages/lead-pipeline run audit-batch --"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
